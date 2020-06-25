@@ -1,0 +1,13 @@
+#not used by the m2a  build
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+Sphinx = "==3.1.1"
+
+[requires]
+python_version = "3.6"
