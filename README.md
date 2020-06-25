@@ -1,5 +1,12 @@
-# aws-networking-infrastructure
-This terraform module creates networking infrastructure like VPC, Subnet, Internet Gateway, Nat Gateway, Route Table, Routing Rules, Load Balancer etc.
+# AWS Networking Infrastructure
+This terraform module creates networking infrastructure like VPC, Subnet, Internet Gateway, NAT Gateway, Route Table, 
+Routing Rules etc.
+
+
+# Documentation
+Documentation of this module is inside **docs** directory, written using **Sphinx**. To generate **HTML**, enter into 
+**docs** directory and then run the command `make html`. It will create static documentation found in *docs/build/html* 
+directory.
 
 
 # Commands To Manipulate Resources
