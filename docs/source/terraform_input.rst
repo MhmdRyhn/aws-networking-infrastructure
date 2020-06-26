@@ -1,22 +1,15 @@
 
-.. _configuration:
+.. _terraform_input:
 
-#############
-Configuration
-#############
+#########################
+Terraform Input Variables
+#########################
 
 A :ref:`Terraform Module <structure-terraform>` is included which should be used to create infrastructure for
 application to be deployed. The Terraform module accepts variable inputs to configure the resources.
 
 
-.. _terraform-input:
-
-=========================
-Terraform Input Variables
-=========================
-
-
-.. _terraform-input-region:
+.. _terraform_input-region:
 
 ``region``
 ===========
@@ -24,7 +17,7 @@ Terraform Input Variables
 Name of the AWS region where the infrastructure will be created.
 
 
-.. _terraform-input-access_key:
+.. _terraform_input-access_key:
 
 ``access_key``
 ===============
@@ -33,7 +26,7 @@ IAM or root user access key. It is a must to ensure that the IAM user has access
 used in this module.
 
 
-.. _terraform-input-secret_access_key:
+.. _terraform_input-secret_access_key:
 
 ``secret_access_key``
 ======================
@@ -41,8 +34,12 @@ used in this module.
 IAM or root user secret access key. It is a must to ensure that the IAM user has access to create all the resources
 used in this module.
 
+**Note:** :ref:`secret_access_key <terraform_input-secret_access_key>` and
+:ref:`access_key <terraform_input-access_key>` are necessary only when this module is used as the root module
+(i.e., as standalone module). In this case comment out the **provide** block in **terraform/provider.tf** file.
 
-.. _terraform-input-environment:
+
+.. _terraform_input-environment:
 
 ``environment``
 ================
@@ -50,7 +47,7 @@ used in this module.
 Deployment environment name. It can be one of **dev, test, stable, staging, uat or prod**. Default value is **dev**.
 
 
-.. _terraform-input-max_azs_to_select:
+.. _terraform_input-max_azs_to_select:
 
 ``max_azs_to_select``
 ======================
@@ -63,7 +60,7 @@ If the calculated number of availability zones is say `x`, then there will be `x
 private subnets created.
 
 
-.. _terraform-input-nat_gateways_to_be_used:
+.. _terraform_input-nat_gateways_to_be_used:
 
 ``nat_gateways_to_be_used``
 ============================
