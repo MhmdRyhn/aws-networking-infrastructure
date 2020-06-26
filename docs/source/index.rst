@@ -12,4 +12,5 @@ Welcome to AWS Networking Infrastructure's documentation!
 
    overview
    structure
-   terraform_config
+   terraform_input
+   terraform_output
