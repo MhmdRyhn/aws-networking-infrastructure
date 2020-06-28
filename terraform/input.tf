@@ -37,15 +37,6 @@ variable "number_of_public_subnet" {
   default     = 1
 }
 
-//# Number of maximum availability zones. There'll be one private and one public subnet per az.
-//# If the value is greater than number of azs in that region, then all azs will be selected.
-//#If the value is less than 2, then 2 will be considered (i.e., the minimum value should be 2).
-//variable "max_azs_to_select" {
-//  type        = number
-//  description = "Number of maximum availability zones to be selected."
-//  default     = 2
-//}
-
 # If value is `single`, one NAT gateway will be used for all the subnets.
 # If value is `per-subnet`, one NAT gateway will be used per subnet.
 # If the value is other than any of `these`, it'll be considered as `single`.
