@@ -47,17 +47,36 @@ used in this module.
 Deployment environment name. It can be one of **dev, test, stable, staging, uat or prod**. Default value is **dev**.
 
 
-.. _terraform_input-max_azs_to_select:
+.. _terraform_input-identifier:
 
-``max_azs_to_select``
-======================
+``identifier``
+===============
 
-Maximum number of availability zones to select. If the value is less than 2 it's value'll be 2 (i.e., minimum 2 azs).
-If the value is greater than the number of availability zones of the region selected, then it's value'll be the
-maximum number of availability zones in that region.
+This is a string that helps you easily differentiate your resources from others. This will be used as the first part of
+your resource name. For example. If your resource name is **nat-gateway**, environment is dev, region is us-east-2
+and the identifier is **DemoCloud**, then your resource name will be **DemoCloud-dev-US-EAST-2-nat-gateway**.
 
-If the calculated number of availability zones is say `x`, then there will be `x` public subnets and `x`
-private subnets created.
+
+.. _terraform_input-number_of_private_subnet:
+
+``number_of_private_subnet``
+=============================
+
+The number of private subnet you want to create. This must ne a positive integer. Subnets will be distributed across
+the availability zones (azs) evenly. For example, in us-east-2, there are 3 azs named us-east-2a, us-east-2b,
+us-east-2c and you choose to create 5 private subnets. In this case, there will be 2, 2 and 1 subnets in us-east-2a,
+us-east-2b and us-east-2c respectively.
+
+
+.. _terraform_input-number_of_public_subnet:
+
+``number_of_public_subnet``
+============================
+
+The number of public subnet you want to create. This must ne a positive integer. Subnets will be distributed across
+the availability zones (azs) evenly the way private subnets are done. For example, in us-east-2, there are 3 azs named
+us-east-2a, us-east-2b, us-east-2c and you choose to create 5 private subnets. In this case, there will be 2, 2 and 1
+subnets in us-east-2a, us-east-2b and us-east-2c respectively.
 
 
 .. _terraform_input-nat_gateways_to_be_used:
@@ -65,9 +84,9 @@ private subnets created.
 ``nat_gateways_to_be_used``
 ============================
 
-Value can either be `single` or `multiple`. If the value set is other than `multiple`, it'll consider that value as
+Value can either be `single` or `per-subnet`. If the value set is other than `per-subnet`, it'll consider that value as
 `single`. Default value is `single`.
 
-If value is `single`, a common NAT Gateway will be used for all the **private subnets**. If the value is `multiple`,
-then one NAT Gateway per private subnet will be created. This option is essential for high availability and high
-performance.
+If value is `single`, a common NAT Gateway will be used for all the **private subnets**. If the value is `per-subnet`,
+then one NAT Gateway per private subnet will be created. This option (per-subnet) is essential for high availability
+and high performance.
