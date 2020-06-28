@@ -1,25 +1,29 @@
-output "availability_zones" {
-  value = local.azs
+//output "availability_zones" {
+//  value = local.azs
+//}
+
+output "vpc_id" {
+  value = aws_vpc.main_vpc[0].id
 }
 
-output "public_subnets" {
-  value = [for subnet in aws_subnet.public_subnet: subnet.id]
+output "public_subnets_id" {
+  value = [for subnet in aws_subnet.public_subnet : subnet.id]
 }
 
-output "public_subnet_per_az" {
-  value = zipmap(local.azs, [for subnet in aws_subnet.public_subnet: subnet.id])
+//output "public_subnet_per_az" {
+//  value = zipmap(local.azs, [for subnet in aws_subnet.public_subnet: subnet.id])
+//}
+
+output "private_subnets_id" {
+  value = [for subnet in aws_subnet.private_subnet : subnet.id]
 }
 
-output "private_subnets" {
-  value = [for subnet in aws_subnet.private_subnet: subnet.id]
-}
+//output "private_subnet_per_az" {
+//  value = zipmap(local.azs, [for subnet in aws_subnet.private_subnet: subnet.id])
+//}
 
-output "private_subnet_per_az" {
-  value = zipmap(local.azs, [for subnet in aws_subnet.private_subnet: subnet.id])
-}
-
-output "internet_gateway" {
-  value = aws_internet_gateway.internet_gateway.id
+output "internet_gateway_id" {
+  value = aws_internet_gateway.internet_gateway[0].id
 }
 
 //output "route_table_public" {
